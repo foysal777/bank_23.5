@@ -1,0 +1,61 @@
+{% load crispy_forms_tags %}
+
+{% block css_add %}
+<style>
+    .hover\:bg-red-600:hover {
+        background-color: #ff0004;
+    }
+
+    .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .form-content {
+        width: 50%; /* Adjust the width as needed */
+        background-color: rgb(166, 209, 243);
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-field {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .submit-button {
+        background-color: green;
+        color: white;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        width: 100%;
+        margin-top: 1rem;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .submit-button:hover {
+        background-color: red; /* Change to desired hover color */
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="form-container">
+    <div class="form-content">
+        <h1 class="text-center mt-5 text-3xl font-bold text-gray-800">Change Password Page</h1>
+
+        <form class="mt-10 form-field" method="post">
+            {% csrf_token %}   
+
+            {{ data | crispy }}
+
+            <button class="submit-button" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
